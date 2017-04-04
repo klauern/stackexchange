@@ -1,5 +1,7 @@
 package stackexchange
 
+import "github.com/dghubble/sling"
+
 type ResponseWrapper struct {
 	Items          []interface{} `json:"items"`
 	BackOffSeconds int           `json:"backoff,omitempty"`
@@ -24,21 +26,34 @@ const (
 	Relevance
 )
 
+func (m *SortMethod) String() string {
+	switch m {
+	case Activity:
+		return "last_activity_date"
+	case Creation:
+		return "creation_date"
+	case Votes:
+		return "score"
+	case Relevance:
+		return "relevance"
+	}
+}
+
 type AdvancedSearch struct {
-	Accepted  bool       `json:",omitempty"`
-	Answers   int        `json:",omitempty"`
-	Body      string     `json:",omitempty"`
-	Closed    bool       `json:",omitempty"`
-	Migrated  bool       `json:",omitempty"`
-	Notice    bool       `json:",omitempty"`
-	NotTagged []string   `json:",omitempty"`
-	Tagged    []string   `json:",omitempty"`
-	Title     string     `json:",omitempty"`
-	User      string     `json:",omitempty"`
-	URL       string     `json:",omitempty"`
-	Views     int        `json:",omitempty"`
-	Wiki      bool       `json:",omitempty"`
-	SortBy    SortMethod `json:",omitempty"`
+	Accepted  bool       `url:"accepted,omitempty"`
+	Answers   int        `url:"answers,omitempty"`
+	Body      string     `url:"body,omitempty"`
+	Closed    bool       `url:"closed,omitempty"`
+	Migrated  bool       `url:"migrated,omitempty"`
+	Notice    bool       `url:"notice,omitempty"`
+	NotTagged []string   `url:"nottagged,omitempty"`
+	Tagged    []string   `url:"tagged,omitempty"`
+	Title     string     `url:"title,omitempty"`
+	User      string     `url:"user,omitempty"`
+	URL       string     `url:"url,omitempty"`
+	Views     int        `url:"views,omitempty"`
+	Wiki      bool       `url:"wiki,omitempty"`
+	SortBy    SortMethod `url:"sort,omitempty"`
 }
 
 const redirectURI = "https://stackexchange.com/oauth/login_success"
@@ -55,6 +70,11 @@ type OAuth struct {
 
 type Client struct {
 	oauth *OAuth
+}
+
+func GetThing() {
+	slinger := sling.New()
+	slinger.Get("/")
 }
 
 func NewClient(client *OAuth) *Client {

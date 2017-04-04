@@ -1,3 +1,5 @@
 package stackexchange
 
-func QueryBashQuestions()
+func QueryBashFunctions() *ResponseWrapper {
+
+}
