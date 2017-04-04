@@ -1,1 +1,3 @@
 package stackexchange
+
+func QueryBashQuestions()

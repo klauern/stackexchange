@@ -12,7 +12,7 @@ const (
 type FilterType int
 
 const (
-	Safe   FilterType = iota
+	Safe FilterType = iota
 	Unsafe
 )
 
@@ -23,7 +23,7 @@ type Filter struct {
 	Type     FilterType
 }
 
-func NewFilter() (*Filter) {
+func NewFilter() *Filter {
 	return &Filter{
 		Base: DefaultFilter,
 		Type: Safe,
