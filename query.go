@@ -36,6 +36,8 @@ func (m *SortMethod) String() string {
 		return "score"
 	case Relevance:
 		return "relevance"
+	default:
+		return "last_activity_date"
 	}
 }
 
