@@ -26,7 +26,7 @@ const (
 	Relevance
 )
 
-func (m *SortMethod) String() string {
+func (m SortMethod) String() string {
 	switch m {
 	case Activity:
 		return "last_activity_date"
@@ -75,7 +75,7 @@ type Client struct {
 }
 
 func GetThing() {
-	slinger := sling.New()
+	slinger := sling.New().Base(BaseURI)
 	slinger.Get("/")
 }
 
