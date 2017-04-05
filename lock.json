@@ -1,0 +1,21 @@
+{
+  "memo": "9b30ef6927c206b025488c5be9ca97c62d9bd454db25638b44eb58ce948d42b8",
+  "projects": [
+    {
+      "name": "github.com/dghubble/sling",
+      "branch": "master",
+      "revision": "bbfb8293bd33a6baad33d718aacf66ef73a29f30",
+      "packages": [
+        "."
+      ]
+    },
+    {
+      "name": "github.com/google/go-querystring",
+      "branch": "master",
+      "revision": "53e6ce116135b80d037921a7fdd5138cf32d7a8a",
+      "packages": [
+        "query"
+      ]
+    }
+  ]
+}

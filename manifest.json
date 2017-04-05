@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "github.com/dghubble/sling": {
+      "branch": "master"
+    }
+  }
+}
