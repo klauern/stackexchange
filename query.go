@@ -1,6 +1,10 @@
 package stackexchange
 
-import "github.com/dghubble/sling"
+import (
+    "github.com/dghubble/sling"
+    "net/http"
+    "net/http/httputil"
+)
 
 type ResponseWrapper struct {
 	Items          []interface{} `json:"items"`
@@ -17,6 +21,7 @@ type ResponseWrapper struct {
 	Type           string        `json:"type,omitempty"`
 }
 
+// SortMethod determines the method of sorting
 type SortMethod int
 
 const (
@@ -65,13 +70,26 @@ const expires = 86399
 var BaseURI = "https://api.stackexchange.com/2.2/"
 
 type OAuth struct {
-	clientID     int    `json:"client_id"`
-	clientSecret string `json:"client_secret"`
-	key          string `json:"key"`
+    clientID     int
+    clientSecret string
+    key          string
 }
 
 type Client struct {
 	oauth *OAuth
+}
+
+func CreateFilterUri(filter *Filter) string {
+
+}
+
+func (c *Client) CreateFilter(filter *Filter) (string, error) {
+    http.Get()
+
+    req, err := sling.New().Base(BaseURI).Get("/search/advanced").QueryStruct(filter).Request()
+    response := &ResponseWrapper{}
+    var e error
+    sling.New().Do(req, response, e)
 }
 
 func GetThing() {
