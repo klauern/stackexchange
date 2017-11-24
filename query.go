@@ -1,9 +1,9 @@
 package stackexchange
 
 import (
-    "github.com/dghubble/sling"
-    "net/http"
-    "net/http/httputil"
+	"github.com/dghubble/sling"
+	"net/http"
+	"net/http/httputil"
 )
 
 type ResponseWrapper struct {
@@ -70,9 +70,9 @@ const expires = 86399
 var BaseURI = "https://api.stackexchange.com/2.2/"
 
 type OAuth struct {
-    clientID     int
-    clientSecret string
-    key          string
+	clientID     int
+	clientSecret string
+	key          string
 }
 
 type Client struct {
@@ -84,12 +84,12 @@ func CreateFilterUri(filter *Filter) string {
 }
 
 func (c *Client) CreateFilter(filter *Filter) (string, error) {
-    http.Get()
+	http.Get()
 
-    req, err := sling.New().Base(BaseURI).Get("/search/advanced").QueryStruct(filter).Request()
-    response := &ResponseWrapper{}
-    var e error
-    sling.New().Do(req, response, e)
+	req, err := sling.New().Base(BaseURI).Get("/search/advanced").QueryStruct(filter).Request()
+	response := &ResponseWrapper{}
+	var e error
+	sling.New().Do(req, response, e)
 }
 
 func GetThing() {
